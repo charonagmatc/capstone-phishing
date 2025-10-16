@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>OrionCard – Transaction Verification (DEMO)</title>
+<title>OrionCard – Transaction Verification</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
   :root{--accent:#0a6cff;--bg:#f4f6f8;--card:#fff;--muted:#64748b}
@@ -14,7 +14,6 @@
   .brand{font-weight:800;color:var(--accent);font-size:20px}
   .body{padding:24px}
   h1{margin:0 0 8px;font-size:22px;color:#0f1724}
-  .demoBadge{color:#dc2626;font-weight:700;margin-bottom:14px;background:#fef2f2;padding:10px;border-radius:6px;border-left:4px solid #dc2626}
   .alert{background:#fff3cd;padding:14px;border-radius:6px;border-left:4px solid #fbbf24;margin-bottom:20px}
   .txinfo{background:#e8f4fd;padding:18px;border-radius:8px;margin:18px 0;font-size:14px}
   .txinfo p{margin:6px 0}
@@ -28,8 +27,7 @@
   .small{font-size:13px;color:#475569}
   .btn{display:inline-block;background:var(--accent);color:#fff;padding:14px 24px;border-radius:10px;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-size:16px;box-shadow:0 4px 14px rgba(10,108,255,0.25);transition:all 0.2s}
   .btn:hover{background:#0858d6;box-shadow:0 6px 20px rgba(10,108,255,0.35)}
-  .note{margin-top:14px;font-size:13px;color:#64748b;background:#f8fafc;padding:12px;border-radius:6px}
-  .security{margin-top:18px;padding:16px;background:#f0fdf4;border-left:4px solid:#22c55e;border-radius:6px}
+  .security{margin-top:18px;padding:16px;background:#f0fdf4;border-left:4px solid:#22c55e;border-radius:6px;font-size:13px}
 </style>
 </head>
 <body>
@@ -44,8 +42,6 @@
       </div>
 
       <div class="body">
-        <div class="demoBadge">🔒 EDUCATIONAL DEMO – DO NOT ENTER REAL INFORMATION</div>
-
         <h1>Transaction Verification Required</h1>
         <p class="small">Account Holder: <strong>Andrew Charon</strong> | Card: ****1234 | Case: AC-20251015-45678</p>
 
@@ -101,25 +97,18 @@
           </div>
 
           <div>
-            <label>Last 4 Digits of SSN (optional security verification)</label>
+            <label>Last 4 Digits of SSN (security verification)</label>
             <input id="ssn" type="text" placeholder="####" maxlength="4" />
           </div>
 
           <div>
             <button class="btn" type="submit">Verify Identity & Review Transaction</button>
           </div>
-
-          <div class="note">
-            🔒 <strong>Educational Note:</strong> This is a safe, offline demonstration. No data is transmitted or stored. All inputs are immediately cleared upon submission. This simulates how sophisticated phishing pages collect information.
-          </div>
         </form>
 
         <div class="security">
-          <p style="margin:0 0 8px;font-weight:600;color:#166534;">Security Reminder for Training:</p>
-          <p style="margin:4px 0;font-size:13px;color:#166534;">• Legitimate financial institutions NEVER request full card numbers, CVV, or SSN via email links</p>
-          <p style="margin:4px 0;font-size:13px;color:#166534;">• Always verify URLs before entering sensitive information</p>
-          <p style="margin:4px 0;font-size:13px;color:#166534;">• Contact your bank directly using phone numbers from your card if suspicious</p>
-          <p style="margin:4px 0;font-size:13px;color:#166534;">• This demo teaches recognition of sophisticated phishing techniques</p>
+          <p style="margin:0 0 6px;font-weight:600;color:#166534;">🔒 Your Security is Our Priority</p>
+          <p style="margin:4px 0;color:#166534;">This secure connection is encrypted with 256-bit SSL technology. Your information is protected by bank-grade security protocols and will never be shared with third parties.</p>
         </div>
       </div>
     </div>
@@ -129,13 +118,11 @@
 function handleVerification(e){
   e.preventDefault();
 
-  // CRITICAL: Immediately clear all fields for security (do NOT store anything)
   ['name','address','card','exp','cvv','phone','dob','ssn'].forEach(id=>{
     const el = document.getElementById(id);
     if(el) el.value = '';
   });
 
-  // Brief visual pause, then redirect to thank you page
   setTimeout(function(){
     window.location.href = "ai-thanks.html";
   }, 250);
