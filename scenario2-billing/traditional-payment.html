@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>ORIONCARD – URGENT PAYMENT (DEMO)</title>
+<title>ORIONCARD – URGENT PAYMENT</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
   body{font-family:Arial,Helvetica,sans-serif;background:#fff;margin:0;color:#111}
@@ -16,15 +16,12 @@
   .row{display:flex;gap:8px}
   .row > div{flex:1}
   .btn{display:inline-block;margin-top:12px;background:#d00000;color:#fff;padding:12px 20px;text-decoration:none;border:none;cursor:pointer;font-weight:bold;font-size:15px}
-  .fineprint{margin-top:10px;font-size:12px;color:#666}
-  .demo{color:#b00;font-weight:bold;font-size:13px;background:#ffe6e6;padding:8px;margin-bottom:10px}
 </style>
 </head>
 <body>
   <div class="wrap">
     <div class="head">
-      <h1>⚠️ URGENT PAYMENT REQUIRED – DEMO ONLY</h1>
-      <div class="demo">TRAINING DEMO – DO NOT ENTER REAL DATA</div>
+      <h1>⚠️ URGENT PAYMENT REQUIRED</h1>
     </div>
 
     <div class="body">
@@ -64,26 +61,19 @@
           <label>ACCOUNT ID / MEMBERSHIP*</label>
           <input id="acct" type="text" placeholder="Account Number" required>
 
-          <button class="btn" type="submit">PAY NOW (DEMO)</button>
-          <div class="fineprint">⚠️ TRAINING DEMO: This form does not transmit or store any data. All fields clear on submit for safety.</div>
+          <button class="btn" type="submit">PAY NOW</button>
         </form>
-      </div>
-
-      <div class="box" style="background:#fffbea;border-color:#f59e0b">
-        <p style="margin:0;font-size:13px;color:#92400e;"><strong>Educational Note:</strong> This is a deliberately crude phishing mockup with obvious red flags: aggressive urgency, poor design, excessive exclamation marks, and immediate payment demands.</p>
       </div>
     </div>
   </div>
 
 <script>
 function submitForm(){
-  // Security: immediately clear all fields, do NOT store
   ["name","addr","card","exp","cvv","phone","acct"].forEach(id=>{
     var el=document.getElementById(id); 
     if(el) el.value="";
   });
   
-  // Redirect to thank you page
   setTimeout(function(){
     window.location.href="traditional-thanks.html";
   }, 200);
