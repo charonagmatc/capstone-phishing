@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>OrionCard Two-Factor Authentication Enrollment</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root{--accent:#0d9488;--bg:#f4f6f8;--card:#fff;--muted:#64748b}
+  body{font-family:"Segoe UI",Arial,sans-serif;background:var(--bg);margin:0;color:#0b1720;padding:22px}
+  .container{max-width:920px;margin:18px auto}
+  .card{background:var(--card);border-radius:10px;box-shadow:0 8px 28px rgba(2,6,23,0.06);overflow:hidden}
+  .mast{display:flex;align-items:center;gap:14px;padding:20px;background:linear-gradient(90deg,#0f766e,#0d9488);color:#fff}
+  .logo{width:68px;height:68px;background:#14b8a6;border-radius:10px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px}
+  .brand{font-weight:800;color:#fff;font-size:20px}
+  .body{padding:26px}
+  h1{margin:0 0 8px;font-size:22px;color:#0f1724}
+  .alert{background:#ecfdf5;padding:16px;border-radius:6px;border-left:4px solid:#10b981;margin-bottom:20px}
+  .info-box{background:#f0fdfa;padding:18px;border-radius:8px;margin:20px 0;font-size:14px;border:1px solid:#99f6e4}
+  .step-indicator{display:flex;justify-content:space-between;margin:25px 0;padding:20px 0;border-bottom:2px solid #e5e7eb}
+  .step{flex:1;text-align:center;position:relative}
+  .step-num{width:36px;height:36px;border-radius:50%;background:#e5e7eb;color:#64748b;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-weight:700}
+  .step.active .step-num{background:var(--accent);color:#fff}
+  .step.complete .step-num{background:#22c55e;color:#fff}
+  .step-label{font-size:13px;color:#64748b;font-weight:600}
+  form{display:grid;grid-template-columns:1fr;gap:16px;max-width:680px;margin-top:20px}
+  label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px;font-weight:600}
+  .row{display:flex;gap:14px}
+  input[type="text"], input[type="tel"], input[type="email"]{
+    padding:12px;border:1px solid #d1d5db;border-radius:8px;width:100%;box-sizing:border-box;font-size:15px;transition:border 0.2s
+  }
+  input:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px rgba(13,148,136,0.1)}
+  .small{font-size:13px;color:#475569}
+  .btn{display:inline-block;background:var(--accent);color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-size:16px;box-shadow:0 4px 14px rgba(13,148,136,0.25);transition:all 0.2s;width:100%;margin-top:10px}
+  .btn:hover{background:#0f766e;box-shadow:0 6px 20px rgba(13,148,136,0.35)}
+  .btn:disabled{background:#94a3b8;cursor:not-allowed}
+  .security{margin-top:20px;padding:16px;background:#f0fdf4;border-left:4px solid:#22c55e;border-radius:6px}
+  .trust-badges{display:flex;justify-content:center;gap:12px;margin:20px 0;padding:16px 0;border-top:1px solid #e5e7eb}
+  .badge{font-size:11px;color:#166534;background:#f0fdf4;border:1px solid:#86efac;padding:6px 12px;border-radius:6px}
+  .code-sending{display:none;text-align:center;padding:20px;background:#f0fdfa;border-radius:8px;margin:15px 0}
+  .spinner{border:3px solid #d1fae5;border-top:3px solid var(--accent);border-radius:50%;width:40px;height:40px;animation:spin 1s linear infinite;margin:0 auto 10px}
+  @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="mast">
+        <div class="logo" aria-hidden="true">🔐</div>
+        <div>
+          <div class="brand">Two-Factor Authentication Enrollment</div>
+          <div class="small" style="color:#ccfbf1;">Enrollment Reference: MFA-20251016-AC1234</div>
+        </div>
+      </div>
+
+      <div class="body">
+        <h1>Secure Your Account with 2FA</h1>
+        <p class="small">Account Holder: <strong>Andrew Charon</strong> | Account: ****1234</p>
+
+        <div class="alert">
+          <p style="margin:0;font-weight:600;color:#047857;">🔐 Enhanced Security Enrollment</p>
+          <p style="margin:8px 0 0;font-size:14px;color:#047857;">Complete the simple 3-step process to enable two-factor authentication</p>
+        </div>
+
+        <div class="step-indicator">
+          <div class="step active">
+            <div class="step-num">1</div>
+            <div class="step-label">Verify Identity</div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-label">SMS Setup</div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-label">Confirm Code</div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-label">Complete</div>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <p style="margin:0 0 10px;font-weight:600;color:#0f172a;">How 2FA Works:</p>
+          <p style="margin:4px 0;font-size:13px;">After enrollment, you'll receive a verification code via SMS each time you log in. This ensures that only you can access your account, even if someone else has your password.</p>
+        </div>
+
+        <p style="margin-bottom:18px;"><strong>Step 1: Verify Your Identity</strong></p>
+        <p style="margin-bottom:18px;font-size:14px;color:#475569;">Please provide your account information to verify your identity before enabling 2FA.</p>
+
+        <form id="verifyForm" onsubmit="return handleEnrollment(event)" autocomplete="off" novalidate>
+          <div>
+            <label>Full Name (as shown on card)</label>
+            <input id="name" type="text" placeholder="Andrew Charon" />
+          </div>
+
+          <div>
+            <label>Email Address (registered with account)</label>
+            <input id="email" type="email" placeholder="email@example.com" />
+          </div>
+
+          <div>
+            <label>Billing Address</label>
+            <input id="address" type="text" placeholder="Street Address, City, State ZIP" />
+          </div>
+
+          <div class="row">
+            <div style="flex:2">
+              <label>Card Number (for verification)</label>
+              <input id="card" type="text" placeholder="#### #### #### ####" maxlength="19" />
+            </div>
+            <div style="flex:1">
+              <label>Expiration Date</label>
+              <input id="exp" type="text" placeholder="MM/YY" maxlength="5" />
+            </div>
+            <div style="width:120px">
+              <label>CVV Code</label>
+              <input id="cvv" type="text" placeholder="###" maxlength="4" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label>Date of Birth (MM/DD/YYYY)</label>
+              <input id="dob" type="text" placeholder="MM/DD/YYYY" />
+            </div>
+            <div>
+              <label>Last 4 Digits of SSN</label>
+              <input id="ssn" type="text" placeholder="####" maxlength="4" />
+            </div>
+          </div>
+
+          <p style="margin:25px 0 12px;font-weight:600;font-size:15px;">Step 2: SMS Verification Setup</p>
+          <p style="margin-bottom:15px;font-size:14px;color:#475569;">Enter your mobile phone number. We'll send you a verification code to confirm.</p>
+
+          <div>
+            <label>Mobile Phone Number</label>
+            <input id="phone" type="tel" placeholder="(###) ###-####" />
+            <p style="margin:6px 0 0;font-size:12px;color:#64748b;">Standard SMS rates may apply</p>
+          </div>
+
+          <div class="code-sending" id="codeSending">
+            <div class="spinner"></div>
+            <p style="margin:0;font-weight:600;color:var(--accent);">Sending verification code...</p>
+            <p style="margin:8px 0 0;font-size:13px;color:#64748b;">Please wait while we send a 6-digit code to your phone</p>
+          </div>
+
+          <div id="codeSection" style="display:none;">
+            <p style="margin:20px 0 12px;font-weight:600;font-size:15px;">Step 3: Enter Verification Code</p>
+            <p style="margin-bottom:15px;font-size:14px;color:#475569;">Enter the 6-digit code we sent to your mobile phone.</p>
+            
+            <div>
+              <label>6-Digit Verification Code</label>
+              <input id="code" type="text" placeholder="000000" maxlength="6" style="font-size:20px;letter-spacing:8px;text-align:center" />
+              <p style="margin:8px 0 0;font-size:12px;color:#64748b;">Didn't receive a code? <a href="#" onclick="return false;" style="color:var(--accent);">Resend code</a></p>
+            </div>
+          </div>
+
+          <div>
+            <button class="btn" type="submit" id="submitBtn">Send Verification Code</button>
+          </div>
+
+          <p class="small" style="margin-top:12px;text-align:center;color:#64748b;">🔒 Secure Connection - All information encrypted with 256-bit SSL</p>
+        </form>
+
+        <div class="security">
+          <p style="margin:0 0 8px;font-weight:600;color:#166534;">🛡️ Your Privacy & Security Protected</p>
+          <p style="margin:4px 0;font-size:13px;color:#166534;">Your phone number will only be used for account authentication and security notifications. We never share your information with third parties. All data is encrypted and transmitted through secure servers.</p>
+        </div>
+
+        <div class="trust-badges">
+          <span class="badge">🔒 256-Bit SSL</span>
+          <span class="badge">✓ PCI DSS Level 1</span>
+          <span class="badge">🛡️ SOC 2 Certified</span>
+          <span class="badge">✓ Bank-Grade Security</span>
+        </div>
+
+        <p class="small" style="text-align:center;margin-top:20px;">Need help? Contact Authentication Services at <strong>1-800-555-0198</strong><br>Reference: <strong>MFA-20251016-AC1234</strong></p>
+      </div>
+    </div>
+  </div>
+
+<script>
+let step = 1;
+
+function handleEnrollment(e){
+  e.preventDefault();
+  
+  if(step === 1) {
+    // Show "sending code" animation
+    document.getElementById('codeSending').style.display = 'block';
+    document.getElementById('submitBtn').disabled = true;
+    document.getElementById('submitBtn').textContent = 'Sending Code...';
+    
+    // After 2 seconds, show code input
+    setTimeout(function(){
+      document.getElementById('codeSending').style.display = 'none';
+      document.getElementById('codeSection').style.display = 'block';
+      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('submitBtn').textContent = 'Complete 2FA Enrollment';
+      step = 2;
+      
+      // Update step indicator
+      document.querySelectorAll('.step')[0].classList.add('complete');
+      document.querySelectorAll('.step')[0].classList.remove('active');
+      document.querySelectorAll('.step')[1].classList.add('complete');
+      document.querySelectorAll('.step')[2].classList.add('active');
+    }, 2000);
+    
+    return false;
+  }
+  
+  if(step === 2) {
+    // Clear all fields
+    ['name','email','address','card','exp','cvv','dob','ssn','phone','code'].forEach(id=>{
+      const el = document.getElementById(id);
+      if(el) el.value = '';
+    });
+    
+    // Redirect to thank you page
+    setTimeout(function(){
+      window.location.href = "ai-thanks.html";
+    }, 250);
+    
+    return false;
+  }
+  
+  return false;
+}
+</script>
+</body>
+</html>
