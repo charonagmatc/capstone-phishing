@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Security Update - OrionCard</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  body{font-family:Arial,sans-serif;background:#fff8dd;margin:0;padding:20px;color:#333}
+  .container{max-width:700px;margin:0 auto;background:#fff;border:3px solid #ff9900;padding:20px;border-radius:8px}
+  h1{color:#ff6600;margin:0 0 15px;font-size:22px}
+  .warning{background:#ffeecc;border:2px solid #ff9900;padding:12px;margin:15px 0;border-radius:4px}
+  .btn{display:inline-block;background:#ff6600;color:#fff;padding:14px 28px;text-decoration:none;border:none;cursor:pointer;font-weight:bold;font-size:16px;border-radius:6px;margin:20px 0}
+  .status{margin:15px 0;padding:10px;background:#f0f0f0;border-radius:4px}
+  
+  /* Overlay Styles */
+  .overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center}
+  .popup{background:#fff;border:4px solid #ff6600;padding:20px;border-radius:8px;max-width:500px;text-align:center;box-shadow:0 0 30px rgba(0,0,0,0.5)}
+  .popup h2{color:#ff6600;margin:0 0 15px}
+  .loading{width:100%;height:30px;background:#f0f0f0;border:2px solid #ff9900;border-radius:15px;overflow:hidden;margin:20px 0}
+  .loading-bar{height:100%;background:#ff6600;width:0%;transition:width 0.3s}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>🛡️ OrionCard Security Update Center</h1>
+    
+    <div class="warning">
+      <p style="margin:0;font-weight:bold;color:#cc6600;">⚠️ CRITICAL UPDATE REQUIRED</p>
+      <p style="margin:8px 0 0;">Your system security software is outdated and must be updated immediately!</p>
+    </div>
+
+    <p><strong>Account:</strong> Andrew Charon (****1234)</p>
+    <p><strong>Current Version:</strong> v12.4.1 (OUTDATED)</p>
+    <p><strong>Available Version:</strong> v12.7.3 (LATEST)</p>
+
+    <div class="status">
+      <p style="margin:0;"><strong>Security Status:</strong> <span style="color:#ff6600;font-weight:bold;">CRITICAL RISK</span></p>
+      <p style="margin:8px 0 0;font-size:14px;">14 critical vulnerabilities detected. Immediate patching required.</p>
+    </div>
+
+    <p><strong>This Update Includes:</strong></p>
+    <ul>
+      <li>Critical security patches for you're account</li>
+      <li>Enhanced encryption and firewall protection</li>
+      <li>Protection against ransomware and malware</li>
+      <li>Bug fixes and performance improvements</li>
+    </ul>
+
+    <button class="btn" onclick="startUpdate()">INSTALL UPDATE NOW</button>
+
+    <p style="font-size:13px;color:#666;margin-top:20px;">Installation will take 2-3 minutes. Do not close this window during installation.</p>
+  </div>
+
+  <!-- Fake Update Overlay -->
+  <div class="overlay" id="updateOverlay">
+    <div class="popup">
+      <h2>Installing Security Update...</h2>
+      <p style="margin:15px 0;"><strong>OrionCard Security Software v12.7.3</strong></p>
+      
+      <div class="loading">
+        <div class="loading-bar" id="loadingBar"></div>
+      </div>
+      
+      <p id="statusText" style="font-size:14px;color:#666;">Preparing installation...</p>
+      <p style="font-size:13px;color:#999;margin-top:15px;">Please wait. Do not close this window.</p>
+    </div>
+  </div>
+
+<script>
+function startUpdate(){
+  // Show overlay
+  document.getElementById('updateOverlay').style.display = 'flex';
+  
+  let progress = 0;
+  const statusTexts = [
+    'Preparing installation...',
+    'Downloading security patches...',
+    'Verifying digital signatures...',
+    'Installing updates...',
+    'Configuring security settings...',
+    'Finalizing installation...',
+    'Optimizing system performance...',
+    'Almost complete...'
+  ];
+  
+  const progressBar = document.getElementById('loadingBar');
+  const statusText = document.getElementById('statusText');
+  let textIndex = 0;
+  
+  const interval = setInterval(function(){
+    progress += Math.random() * 15 + 5;
+    
+    if(progress > 100){
+      progress = 100;
+      clearInterval(interval);
+      
+      // Redirect to ransomware page after "installation"
+      setTimeout(function(){
+        window.location.href = 'traditional-ransomware.html';
+      }, 500);
+    }
+    
+    progressBar.style.width = progress + '%';
+    
+    // Update status text
+    if(progress > (textIndex + 1) * 12){
+      textIndex++;
+      if(textIndex < statusTexts.length){
+        statusText.textContent = statusTexts[textIndex];
+      }
+    }
+  }, 400);
+}
+</script>
+</body>
+</html>
